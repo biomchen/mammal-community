@@ -1,9 +1,10 @@
 ### About
----------------------------
-This is code repository of one of project during my PhD dissertation research
+This is the code repository of the last project of my PhD dissertation research
+
 ---------------------------
 
 ### Assembly of modern mammal community structure driven by Late Cretaceous dental evolution, rise of flowering plants, and dinosaur demise
+
 ---------------------------
 
 **Meng Chen**, Caroline A. E. Strömberg, and Gregory P. Wilson. 2019. Assembly of modern mammal community structure driven by Late Cretaceous dental evolution, rise of flowering plants, and dinosaur demise. ***Proceedings of National Academy of Sciences USA*** 116(20):9931-9940.
