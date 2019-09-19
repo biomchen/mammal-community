@@ -16,6 +16,7 @@ The long-standing view that Mesozoic mammaliaforms living in dinosaur-dominated 
 ### Keywords
 
 Mesozoic mammaliaform, mammal community, ecological structure, tribosphenic molar, angiosperm diversification
+
 ----------------------------
 
 The paper and original data can be download at the [PNAS website](https://www.pnas.org/content/116/20/9931).
