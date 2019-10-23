@@ -1,14 +1,14 @@
 
-# Ecological diversity analyses codes originally written by Meng Chen during the doctoral dissertation.
+# Resampling analyses codes originally written by Meng Chen during the doctoral dissertation.
 
-# The purpose of the analyses is to aim to calculate how many different combination of three ecological
-# paramters in each mammal community to decipher the ecological differences among them.
+# reorganized on 23Oct2019
 
-#########################################################################################################
-# The analyses here are focusing on the bootstrap resampling about the communities in different climate #
-# environment in order to test whether the sample size has a big impact on the results                  #
-# Author: Meng Chen                                                   Date: 12Jan2016                   #
-#########################################################################################################
+################################################################
+# The analyses here are focusing on the bootstrap resampling   #
+# about communities in different environments in order to test #
+# whether the sample size has a big impact on the results      #
+# Author: Meng Chen                        Date: 12Jan2015     #
+################################################################
 
 # libraries used in the data analyses
 library(permute)
@@ -59,8 +59,7 @@ vegetation.pair <- c("tropical rain forest vs tropical seasonal forest",
                      "temperate forest vs boreal forest")
 
 # Resample function for speceis ecotypes most repeatedly
-resample.func <- function(input.data, n.species)
-{
+resample.func <- function(input.data, n.species) {
   set.seed(1234)
   resample.data <- sample(input.data[,1], 1000, replace=T)
   table.data <- table(resample.data)
@@ -76,8 +75,7 @@ resample.func <- function(input.data, n.species)
 }
 
 # function for resampled ERich based on average No of species
-resampled.ERich.func <- function(input.data)
-{
+resampled.ERich.func <- function(input.data) {
   set.seed(1234)
   resampled.ERich <- data.frame()
   resampled.data <- sample(input.data[,1], 6, replace=T)
@@ -87,8 +85,7 @@ resampled.ERich.func <- function(input.data)
 }
 
 # function to calculate mean of resampled number of speceis in each evironmental type
-mean.species.func <- function(input.data)
-{
+mean.species.func <- function(input.data) {
   set.seed(1234)
   resampled.no.species <- sample(table(input.data[,1]), 1000, replace=T)
   mean.result <- mean(resampled.no.species)
@@ -96,8 +93,7 @@ mean.species.func <- function(input.data)
 }
 
 # writing table function
-write.func <- function(data, filename)
-{
+write.func <- function(data, filename) {
     write.table(data[,-4],
                 file = filename,
                 sep=",",
@@ -106,8 +102,7 @@ write.func <- function(data, filename)
 }
 
 # Bootstrapping the specific number of species
-bs.species.func <- function (input.data, n.species)
-{
+bs.species.func <- function (input.data, n.species) {
   start <- Sys.time()
   mean.eds <- data.frame()
   set.seed(1234)
@@ -126,13 +121,12 @@ bs.species.func <- function (input.data, n.species)
     }
     mean.eds <- rbind(mean.eds,c(mean(eds.community[,1])))
   }
-  print(Sys.time()-start
+  print(Sys.time()-start)
   return(mean.eds)
 }
 
 # Histgram plot
-hist.func <- function(data, bks, color)
-{
+hist.func <- function(data, bks, color) {
     h <- hist(data,
               breaks=bks,
               xlim=c(0,8),
