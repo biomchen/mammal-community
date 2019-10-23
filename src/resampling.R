@@ -18,9 +18,8 @@ library(MASS)
 library(boot)
 library(sp)
 library(tidyr)
-
-setwd("/Users/mengchen/Documents/GitHub/2018_Mamm_Comm_Evol_Ecol⁩/data⁩")
-
+# set up the directory
+setwd("your directory")
 
 #################################################
 # Parameters and Functions used in the analyses #
@@ -147,7 +146,6 @@ hist.func <- function(data, bks, color)
     abline(v=quantile(data, prob=c(0.025, 0.975)), col="red", lwd=1.5, lty=2)
 }
 
-
 #################################################################
 # Bootstrapping for ecological function combination to identify #
 # signture ecospace occupatons in each environmental type       #
@@ -260,7 +258,6 @@ sig.mastersheet <- read.csv(file="Sig_MaterSheet_Resampled_16Jan2018.csv", sep="
 sig.mastersheet <- sig.mastersheet[,c(1,5)]
 write.table(table(sig.mastersheet), file="Sig_MaterSheet_Summary_Resampled_16Jan2018.csv", sep=",")
 
-
 ####################################################################
 # Bootstrapping for designated numbers of species with a community #
 ####################################################################
@@ -336,7 +333,6 @@ write.csv(bootstropped.results.stat.5p, file="Bootstrapped_statistic_5species_16
 ####################
 # Pair-wise t test #
 ####################
-
 
 # two habitats
 habitat.results.test.5p <- data.frame()
@@ -442,7 +438,6 @@ hist.func(ttf.results[,1], 40, "green3")
 # boreal forest
 hist.func(bf.results[,1], 40, "darkviolet")
 
-
 ###########################################
 # 6 Species in each simulated communities #
 ###########################################
@@ -450,7 +445,7 @@ hist.func(bf.results[,1], 40, "darkviolet")
 # 2 habitats
 # Closed habitat
 cl.results <- bs.species.func(mcm.close[,3:5], 6)
-# Open
+# Open habitat
 op.results <- bs.species.func(mcm.open[,3:5], 6)
 
 # 4 different climates
@@ -504,7 +499,6 @@ qt.bootstrapped.6p <- apply(bootstrapped.results.all.6p, 2, quantile, prob=c(0.0
 bootstropped.results.stat.6p <- t(rbind(t(mean.bootstrapped.6p), t(sd.bootstrapped.6p)))
 colnames(bootstropped.results.stat.6p) <- c("Mean", "sd")
 bootstropped.results.stat.6p <- cbind(bootstropped.results.stat.6p, t(qt.bootstrapped.6p))
-
 write.csv(bootstropped.results.stat.6p, file="Bootstrapped_statistic_6species_16Jan2018.csv")
 
 ####################
@@ -557,7 +551,6 @@ rownames(vegetation.results.test.6p) <- vegetation.pair
 t.test.results.all.6species <- rbind(habitat.results.test.6p,
                                      climate.results.test.6p,
                                      vegetation.results.test.6p)
-
 write.csv(t.test.results.all.6species, file = "Bootstrapped_statistic_table_6species_16Jan2018.csv")
 
 ## histgram plots
@@ -668,7 +661,6 @@ colnames(bootstrapped.results.all.10p) <- c("Close", "Open", "Tropical","Arid",
                                             "Tropical seasonal forest", "Savanna",
                                             "Grassland", "Shrubland", "Desert",
                                             "Temperate forest", "Boreal forest")
-
 mean.bootstrapped.10p <- apply(bootstrapped.results.all.10p, 2, mean)
 sd.bootstrapped.10p <- apply(bootstrapped.results.all.10p, 2, sd)
 qt.bootstrapped.10p <- apply(bootstrapped.results.all.10p, 2, quantile, prob=c(0.025, 0.975))
@@ -677,7 +669,6 @@ qt.bootstrapped.10p <- apply(bootstrapped.results.all.10p, 2, quantile, prob=c(0
 bootstropped.results.stat.10p <- t(rbind(t(mean.bootstrapped.10p), t(sd.bootstrapped.10p)))
 colnames(bootstropped.results.stat.10p) <- c("Mean", "sd")
 bootstropped.results.stat.10p <- cbind(bootstropped.results.stat.10p, t(qt.bootstrapped.10p))
-
 write.csv(bootstropped.results.stat.10p, file="Bootstrapped_statistic_10species_16Jan2018.csv")
 
 #####################
